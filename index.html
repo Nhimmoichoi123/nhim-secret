@@ -12,44 +12,42 @@
     }
     input, button {
       padding: 10px;
-      font-size: 16px;
       margin: 5px;
     }
-    #rickroll {
+    #rick {
       display: none;
     }
   </style>
 </head>
+
 <body>
 
 <h2>🔐 Nhập mật khẩu</h2>
 
-<input type="password" id="pass1">
-<button onclick="check1()">Mở khóa</button>
+<div id="step1">
+  <input type="password" id="p1">
+  <button onclick="check1()">Mở</button>
+  <p id="hint1"></p>
+</div>
 
-<div id="hint1"></div>
-
-<div id="rickroll">
+<div id="rick">
   <h2>😆 Xin lỗi nha!</h2>
-
   <img src="https://media.giphy.com/media/Vuw9m5wXviFIQ/giphy.gif" width="300">
 
-  <p>🔐 Nhập mật khẩu tiếp:</p>
-  <input type="password" id="pass2">
-  <button onclick="check2()">Tiếp tục</button>
-
-  <div id="hint2"></div>
-  <div id="final"></div>
+  <p>Nhập tiếp mật khẩu:</p>
+  <input type="password" id="p2">
+  <button onclick="check2()">Tiếp</button>
+  <p id="hint2"></p>
+  <p id="final"></p>
 </div>
 
 <script>
 function check1() {
-  var p = document.getElementById("pass1").value;
+  var p = document.getElementById("p1").value;
 
   if (p === "27032015") {
-    document.body.innerHTML = document.getElementById("rickroll").outerHTML;
-    document.body.style.background = "black";
-    document.body.style.color = "lime";
+    document.getElementById("step1").style.display = "none";
+    document.getElementById("rick").style.display = "block";
   } else {
     document.getElementById("hint1").innerHTML =
       "❌ Sai rồi! Gợi ý: mật khẩu là sinh nhật của người đang ngồi trước màn hình 😆";
@@ -57,16 +55,14 @@ function check1() {
 }
 
 function check2() {
-  var p2 = document.getElementById("pass2").value;
+  var p2 = document.getElementById("p2").value;
 
   if (p2 === "20032014") {
     document.getElementById("hint2").innerHTML = "⏳ Đang kiểm tra...";
-
     setTimeout(function() {
       document.getElementById("final").innerHTML =
         "🎉 Chúc mừng, bạn là người độc quyền giải ra những mật khẩu tuyệt vời nhất!";
     }, 2000);
-
   } else {
     document.getElementById("hint2").innerHTML =
       "❌ Sai rồi! Gợi ý: ngày sinh của người làm trang web 😏";
@@ -76,5 +72,3 @@ function check2() {
 
 </body>
 </html>
-
-   

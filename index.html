@@ -5,16 +5,16 @@
   <style>
     body {
       background: black;
-      color: lime;
+      color: #00ff00;
+      font-family: monospace;
       text-align: center;
-      font-family: Arial;
-      margin-top: 100px;
+      margin-top: 80px;
     }
     input, button {
       padding: 10px;
       margin: 5px;
     }
-    #rick {
+    .hidden {
       display: none;
     }
   </style>
@@ -22,52 +22,138 @@
 
 <body>
 
-<h2>🔐 Nhập mật khẩu</h2>
-
+<!-- STEP 1 -->
 <div id="step1">
+  <h2>🔐 Nhập mật khẩu</h2>
   <input type="password" id="p1">
   <button onclick="check1()">Mở</button>
   <p id="hint1"></p>
 </div>
 
-<div id="rick">
-  <h2>😆 Xin lỗi nha!</h2>
+<!-- RICKROLL -->
+<div id="rick" class="hidden">
+  <h2>💀 Chúc mừng, bạn bị Rick roll 💀</h2>
+  <p>Xin lỗi vì đã Rick!</p>
+
   <img src="https://media.giphy.com/media/Vuw9m5wXviFIQ/giphy.gif" width="300">
 
-  <p>Nhập tiếp mật khẩu:</p>
+  <br><br>
   <input type="password" id="p2">
-  <button onclick="check2()">Tiếp</button>
+  <button onclick="check2()">Nhập tiếp</button>
   <p id="hint2"></p>
-  <p id="final"></p>
+  <p id="nextText"></p>
+  <button id="nextBtn" class="hidden" onclick="goNext()">Tiếp</button>
+
+  <audio id="audio">
+    <source src="https://www.myinstants.com/media/sounds/rickroll.mp3">
+  </audio>
+</div>
+
+<!-- QUIZ -->
+<div id="quiz1" class="hidden">
+  <h2>Trong Bảng tuần hoàn Hóa học, Đồng có kí hiệu hóa học là gì?</h2>
+  <input id="q1">
+  <button onclick="checkQ1()">Trả lời</button>
+</div>
+
+<div id="quiz2" class="hidden">
+  <h2 id="q2text"></h2>
+  <input id="q2">
+  <button onclick="checkQ2()">Trả lời</button>
+</div>
+
+<div id="final" class="hidden">
+  <h2>🎉 Chúc mừng bạn đã hoàn thành. Bạn quá giỏi, tôi rất "mộ trên lửa" bạn 🤯</h2>
 </div>
 
 <script>
+
+// STEP 1
 function check1() {
-  var p = document.getElementById("p1").value;
+  let p = document.getElementById("p1").value;
 
   if (p === "27032015") {
-    document.getElementById("step1").style.display = "none";
-    document.getElementById("rick").style.display = "block";
+    document.getElementById("hint1").innerHTML = "Đang truy cập...";
+    
+    setTimeout(function() {
+      document.getElementById("step1").style.display = "none";
+      document.getElementById("rick").style.display = "block";
+
+      // phát nhạc 4s
+      let audio = document.getElementById("audio");
+      audio.play();
+      setTimeout(() => audio.pause(), 4000);
+
+    }, 2000);
+
   } else {
     document.getElementById("hint1").innerHTML =
       "❌ Sai rồi! Gợi ý: mật khẩu là sinh nhật của người đang ngồi trước màn hình 😆";
   }
 }
 
+// STEP 2
 function check2() {
-  var p2 = document.getElementById("p2").value;
+  let p2 = document.getElementById("p2").value;
 
   if (p2 === "20032014") {
     document.getElementById("hint2").innerHTML = "⏳ Đang kiểm tra...";
+
     setTimeout(function() {
-      document.getElementById("final").innerHTML =
-        "🎉 Chúc mừng, bạn là người độc quyền giải ra những mật khẩu tuyệt vời nhất!";
+      document.getElementById("nextText").innerHTML =
+        "Chúc mừng, xin hãy bấm tiếp để qua thử thách tiếp theo";
+      document.getElementById("nextBtn").style.display = "inline-block";
     }, 2000);
+
   } else {
     document.getElementById("hint2").innerHTML =
       "❌ Sai rồi! Gợi ý: ngày sinh của người làm trang web 😏";
   }
 }
+
+// chuyển qua quiz
+function goNext() {
+  document.getElementById("rick").style.display = "none";
+  document.getElementById("quiz1").style.display = "block";
+}
+
+// QUIZ 1
+function checkQ1() {
+  let ans = document.getElementById("q1").value.toLowerCase();
+
+  document.getElementById("quiz1").style.display = "none";
+  document.getElementById("quiz2").style.display = "block";
+
+  if (ans === "cu") {
+    document.getElementById("q2text").innerHTML =
+      "Vàng có kí hiệu hóa học là gì?";
+    window.correctPath = true;
+  } else {
+    document.getElementById("q2text").innerHTML =
+      "Bạc có kí hiệu hóa học là gì?";
+    window.correctPath = false;
+  }
+}
+
+// QUIZ 2
+function checkQ2() {
+  let ans = document.getElementById("q2").value.toLowerCase();
+
+  if (window.correctPath && ans === "au") {
+    finish();
+  } else if (!window.correctPath && ans === "ag") {
+    finish();
+  } else {
+    alert("Sai rồi 😆");
+  }
+}
+
+// FINISH
+function finish() {
+  document.getElementById("quiz2").style.display = "none";
+  document.getElementById("final").style.display = "block";
+}
+
 </script>
 
 </body>

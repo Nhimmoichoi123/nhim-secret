@@ -85,7 +85,6 @@
 <input id="m3">
 
 <button onclick="checkMath3()">Trả lời</button>
-
 </div>
   
 <div id="final" class="hidden">
@@ -166,14 +165,75 @@ function checkQ2() {
   let ans = document.getElementById("q2").value.toLowerCase();
 
   if (window.correctPath && ans === "au") {
-    finish();
+
+    document.getElementById("quiz2").style.display = "none";
+    document.getElementById("math1").style.display = "block";
+
   } else if (!window.correctPath && ans === "ag") {
-    finish();
+
+    document.getElementById("quiz2").style.display = "none";
+    document.getElementById("math1").style.display = "block";
+
   } else {
-    alert("Sai rồi 😆");
+
+    alert("❌ Sai rồi!");
+
   }
 }
 
+  function checkMath1() {
+
+  let ans = document.getElementById("m1").value.trim();
+
+  if (ans === "36") {
+
+    document.getElementById("math1").style.display = "none";
+    document.getElementById("math2").style.display = "block";
+
+  } else {
+
+    alert("❌ Sai rồi!");
+
+  }
+
+}
+
+function checkMath2() {
+
+  let ans = document.getElementById("m2").value.trim();
+
+  if (ans === "67") {
+
+    document.getElementById("math2").style.display = "none";
+    document.getElementById("math3").style.display = "block";
+
+  } else {
+
+    alert("❌ Sai rồi!");
+
+  }
+
+}
+
+function checkMath3() {
+
+  let ans = document.getElementById("m3").value.trim().toLowerCase();
+
+  if (
+    ans === "không biết" ||
+    ans === "ko biết" ||
+    ans === "khong biet"
+  ) {
+
+    finish();
+
+  } else {
+
+    alert("❌ Sai rồi!");
+
+  }
+
+}
 // FINISH
 function finish() {
   document.getElementById("quiz2").style.display = "none";

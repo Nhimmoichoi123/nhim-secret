@@ -80,11 +80,58 @@
 
 <div id="math3" class="hidden">
 
-<h2>Một xe ô tô đang chạy với vận tốc 65 km/h thì người lái xe bất ngờ phát hiện chướng ngại vật trên đường cách đó 50 m...</h2>
+<h2>🚗 Câu 3 (10 điểm)</h2>
+
+<p style="text-align:left;max-width:850px;margin:auto;line-height:1.8;">
+
+Một xe ô tô đang chạy với vận tốc <b>65 km/h</b> thì người lái xe bất ngờ phát hiện chướng ngại vật trên đường cách đó <b>50 m</b>. Người lái xe phản ứng <b>1 giây</b>, sau đó đạp phanh khẩn cấp.
+
+<br><br>
+
+Kể từ thời điểm này, ô tô chuyển động chậm dần đều với vận tốc
+
+<br><br>
+
+<b>v(t) = -10t + 20 (m/s)</b>
+
+<br><br>
+
+trong đó <b>t</b> là thời gian tính bằng giây kể từ lúc đạp phanh.
+
+<br><br>
+
+Gọi <b>s(t)</b> là quãng đường xe ô tô đi được trong <b>t</b> (giây) kể từ lúc đạp phanh.
+
+<br><br>
+
+<b>Cho biết các phát biểu sau đúng hay sai:</b>
+
+<br><br>
+
+a) Quãng đường <b>s(t)</b> mà xe ô tô đi được trong thời gian <b>t</b> (giây) là một nguyên hàm của hàm số <b>v(t)</b>.
+
+<br><br>
+
+b) <b>s(t) = -5t² + 20t</b>
+
+<br><br>
+
+c) Thời gian kể từ lúc đạp phanh đến khi xe ô tô dừng hẳn là <b>20 giây</b>.
+
+<br><br>
+
+d) Xe ô tô đó không va vào chướng ngại vật trên đường.
+
+</p>
+
+<br>
+
+<p><b>👉 Nhập đáp án:</b></p>
 
 <input id="m3">
 
 <button onclick="checkMath3()">Trả lời</button>
+
 </div>
   
 <div id="final" class="hidden">
@@ -222,16 +269,23 @@ function checkMath3() {
   if (
     ans === "không biết" ||
     ans === "ko biết" ||
-    ans === "khong biet"
-  ) {
-
+    ans === "ko bt" ||
+    ans === "không bt" ||
+    ans === "ko biet" ||
+    ans === "khong biet" ||
+    ans === "khong bt" ||
+    ans === "kh bt" ||
+    ans === "k bt" ||
+    ans === "k biết" ||
+    ans === "k biet" ||
+    ans === "khong biết" ||
+    ans === "hong biết" ||
+    ans === "hông biết"
+) {
     finish();
-
-  } else {
-
+} else {
     alert("❌ Sai rồi!");
-
-  }
+}
 
 }
 // FINISH

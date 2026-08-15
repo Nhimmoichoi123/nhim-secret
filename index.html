@@ -80,7 +80,7 @@
 
 <div id="math3" class="hidden">
 
-<h2>🚗 Câu 3 (10 điểm)</h2>
+<h2>🚗 Câu 3</h2>
 
 <p style="text-align:left;max-width:850px;margin:auto;line-height:1.8;">
 
@@ -88,7 +88,7 @@ Một xe ô tô đang chạy với vận tốc <b>65 km/h</b> thì người lái
 
 <br><br>
 
-Kể từ thời điểm này, ô tô chuyển động chậm dần đều với vận tốc
+Kể từ thời điểm này, ô tô chuyển động chậm dần đều với vận tốc:
 
 <br><br>
 
@@ -100,37 +100,90 @@ trong đó <b>t</b> là thời gian tính bằng giây kể từ lúc đạp pha
 
 <br><br>
 
-Gọi <b>s(t)</b> là quãng đường xe ô tô đi được trong <b>t</b> (giây) kể từ lúc đạp phanh.
+Gọi <b>s(t)</b> là quãng đường xe ô tô đi được trong <b>t</b> giây kể từ lúc đạp phanh.
 
 <br><br>
 
-<b>Cho biết các phát biểu sau đúng hay sai:</b>
+<b>a)</b> Quãng đường s(t) là một nguyên hàm của v(t).
 
 <br><br>
 
-a) Quãng đường <b>s(t)</b> mà xe ô tô đi được trong thời gian <b>t</b> (giây) là một nguyên hàm của hàm số <b>v(t)</b>.
+<b>b)</b> s(t) = -5t² + 20t.
 
 <br><br>
 
-b) <b>s(t) = -5t² + 20t</b>
+<b>c)</b> Thời gian kể từ lúc đạp phanh đến khi xe dừng hẳn là 20 giây.
 
 <br><br>
 
-c) Thời gian kể từ lúc đạp phanh đến khi xe ô tô dừng hẳn là <b>20 giây</b>.
-
-<br><br>
-
-d) Xe ô tô đó không va vào chướng ngại vật trên đường.
+<b>d)</b> Xe ô tô đó không va vào chướng ngại vật trên đường.
 
 </p>
-
-<br>
 
 <p><b>👉 Nhập đáp án:</b></p>
 
 <input id="m3">
 
 <button onclick="checkMath3()">Trả lời</button>
+
+</div>
+
+
+<div id="math4" class="hidden">
+
+<h2>🧮 Câu 4</h2>
+
+<p>
+Cho tập hợp Y có 4 con số tự nhiên lớn hơn 2 × 2 nhưng nhỏ hơn 81 / 9.
+Hãy liệt kê các phần tử có trong tập Y.
+</p>
+
+<p><b>Không cần dấu, chỉ cần các số cách nhau 1 ô.</b></p>
+
+<input id="m4">
+
+<button onclick="checkMath4()">Trả lời</button>
+
+</div>
+
+
+<div id="math5" class="hidden">
+
+<h2>🔺 Câu 5</h2>
+
+<p><b>Có thích hình tam giác không?</b></p>
+
+<input id="m5">
+
+<button onclick="checkMath5()">Trả lời</button>
+
+</div>
+
+
+<div id="math6" class="hidden">
+
+<h2>😴 Câu 6</h2>
+
+<p><b>Có hay nhắm mắt khi ngủ không?</b></p>
+
+<input id="m6">
+
+<button onclick="checkMath6()">Trả lời</button>
+
+<p id="math6msg"></p>
+
+</div>
+
+
+<div id="math7" class="hidden">
+
+<h2>🧠 Câu 7</h2>
+
+<p><b>Câu 1 đáp án bao nhiêu?</b></p>
+
+<input id="m7">
+
+<button onclick="checkMath7()">Trả lời</button>
 
 </div>
   
@@ -281,20 +334,95 @@ function checkMath3() {
     ans === "khong biết" ||
     ans === "hong biết" ||
     ans === "hông biết"
-) {
-    finish();
-} else {
+  ) {
+
+    document.getElementById("math3").style.display = "none";
+    document.getElementById("math4").style.display = "block";
+
+  } else {
+
     alert("❌ Sai rồi!");
-}
+
+  }
 
 }
-// FINISH
+  
+  function checkMath4() {
+
+  let ans = document.getElementById("m4").value.trim();
+
+  if (ans === "5 6 7 8") {
+
+    document.getElementById("math4").style.display = "none";
+    document.getElementById("math5").style.display = "block";
+
+  } else {
+
+    alert("❌ Sai rồi!");
+
+  }
+
+}
+
+
+function checkMath5() {
+
+  let ans = document.getElementById("m5").value.trim().toLowerCase();
+
+  if (ans === "có" || ans === "không") {
+
+    document.getElementById("math5").style.display = "none";
+    document.getElementById("math6").style.display = "block";
+
+  } else {
+
+    alert("❌ Chỉ có hai lựa chọn thôi 😭");
+
+  }
+
+}
+
+  function checkMath6() {
+
+  let ans = document.getElementById("m6").value.trim().toLowerCase();
+
+  if (ans === "có") {
+
+    document.getElementById("math6").style.display = "none";
+    document.getElementById("math7").style.display = "block";
+
+  } else if (ans === "không") {
+
+    document.getElementById("math6msg").innerHTML =
+      "💀 Bạn là thần sao?";
+
+  } else {
+
+    alert("❌ Hãy trả lời Có hoặc Không!");
+
+  }
+
+}
+
+  function checkMath7() {
+
+  let ans = document.getElementById("m7").value.trim();
+
+  if (ans === "36") {
+
+    document.getElementById("math7").style.display = "none";
+    finish();
+
+  } else {
+
+    alert("❌ Sai rồi! Hãy nhớ lại Câu 1 😈");
+
+  }
+
+}
 function finish() {
-  document.getElementById("math3").style.display = "none";
+
+  document.getElementById("math7").style.display = "none";
   document.getElementById("final").style.display = "block";
+
 }
-
-</script>
-
-</body>
-</html>
